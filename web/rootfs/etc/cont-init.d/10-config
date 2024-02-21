@@ -10,11 +10,11 @@ mkdir -p \
 # generate keys (maybe)
 if [[ $DISABLE_HTTPS -ne 1 ]]; then
     if [[ $ENABLE_LETSENCRYPT -eq 1 ]]; then
-        ACME_VERSION=3.0.6
+        ACME_VERSION=3.0.7
         validation=${LETSENCRYPT_VALIDATION:-"--standalone"}
         echo "Using validation method: $validation"
         mkdir -p /config/acme.sh
-        wget -o /tmp/acme.sh.tar.gz https://github.com/acmesh-official/acme.sh/archive/refs/tags/$ACME_VERSION.tar.gz
+        wget -O /tmp/acme.sh.tar.gz https://github.com/acmesh-official/acme.sh/archive/refs/tags/$ACME_VERSION.tar.gz
         tar xvf /tmp/acme.sh.tar.gz -C /tmp && rm /tmp/acme.sh.tar.gz
         sh /tmp/acme.sh-$ACME_VERSION/acme.sh --install \
             --home /config/acme.sh \
